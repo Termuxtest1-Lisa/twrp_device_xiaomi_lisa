@@ -26,6 +26,9 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from device
 $(call inherit-product, device/xiaomi/lisa/device.mk)
 
+# Inherit any Orangefox specific setting
+$(call inherit-product, device/xiaomi/lisa/fox_lisa.mk)
+
 # Device identifier
 PRODUCT_NAME := twrp_lisa
 PRODUCT_DEVICE := lisa
