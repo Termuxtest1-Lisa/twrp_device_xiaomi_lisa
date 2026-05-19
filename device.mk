@@ -57,9 +57,7 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock
 
 # Kernel modules
-TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilts/modules)\")
-
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,$(DEVICE_PATH)/prebuilts/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/1.1)
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko apr_dlkm.ko goodix_core.ko hwid.ko mmhardware_sysfs_dlkm.ko msm_drm.ko q6_notifier_dlkm.ko q6_pdr_dlkm.ko qti_battery_charger_main.ko snd_event_dlkm.ko xiaomi_touch.ko"
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
