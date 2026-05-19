@@ -6,6 +6,8 @@ on init
 on boot
     chmod 0755 /system/bin/remove-bootctrl-vintf.sh
     start remove-bootctrl-vintf
+    chmod 0755 /system/bin/set-flash.sh
+    start set-flash.sh
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -52,4 +54,11 @@ service batterysecret /system/bin/batterysecret
     user root
     group system system wakelock
     disabled
+    seclabel u:r:recovery:s0
+
+service set-flash.sh /system/bin/set-flash.sh
+    user root
+    group root
+    disabled
+    oneshot
     seclabel u:r:recovery:s0
