@@ -34,6 +34,10 @@ OF_ENABLE_LPTOOLS := 1
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
 FOX_USE_NANO_EDITOR:=1
 
+# flashlight
+OF_FLASHLIGHT_ENABLE := 1
+OF_FL_PATH1 :=/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:switch_0/
+
 # number of list options before scrollbar creation
 OF_OPTIONS_LIST_NUM := 9
 
