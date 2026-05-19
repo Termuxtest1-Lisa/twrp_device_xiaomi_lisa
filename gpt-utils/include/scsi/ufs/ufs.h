@@ -1,0 +1,49 @@
+/*
+ * This definitions here are from kernel header <scsi/ufs/ufs.h>
+ */
+
+/* Attribute idn for Query requests */
+enum attr_idn {
+	QUERY_ATTR_IDN_BOOT_LU_EN               = 0x00,
+	QUERY_ATTR_IDN_RESERVED                 = 0x01,
+	QUERY_ATTR_IDN_POWER_MODE               = 0x02,
+	QUERY_ATTR_IDN_ACTIVE_ICC_LVL           = 0x03,
+	QUERY_ATTR_IDN_OOO_DATA_EN              = 0x04,
+	QUERY_ATTR_IDN_BKOPS_STATUS             = 0x05,
+	QUERY_ATTR_IDN_PURGE_STATUS             = 0x06,
+	QUERY_ATTR_IDN_MAX_DATA_IN              = 0x07,
+	QUERY_ATTR_IDN_MAX_DATA_OUT             = 0x08,
+	QUERY_ATTR_IDN_DYN_CAP_NEEDED           = 0x09,
+	QUERY_ATTR_IDN_REF_CLK_FREQ             = 0x0A,
+	QUERY_ATTR_IDN_CONF_DESC_LOCK           = 0x0B,
+	QUERY_ATTR_IDN_MAX_NUM_OF_RTT           = 0x0C,
+	QUERY_ATTR_IDN_EE_CONTROL               = 0x0D,
+	QUERY_ATTR_IDN_EE_STATUS                = 0x0E,
+	QUERY_ATTR_IDN_SECONDS_PASSED           = 0x0F,
+	QUERY_ATTR_IDN_CNTX_CONF                = 0x10,
+	QUERY_ATTR_IDN_CORR_PRG_BLK_NUM         = 0x11,
+	QUERY_ATTR_IDN_RESERVED2                = 0x12,
+	QUERY_ATTR_IDN_RESERVED3                = 0x13,
+	QUERY_ATTR_IDN_FFU_STATUS               = 0x14,
+	QUERY_ATTR_IDN_PSA_STATE                = 0x15,
+	QUERY_ATTR_IDN_PSA_DATA_SIZE            = 0x16,
+	QUERY_ATTR_IDN_REF_CLK_GATING_WAIT_TIME	= 0x17,
+	QUERY_ATTR_IDN_WB_FLUSH_STATUS	        = 0x1C,
+	QUERY_ATTR_IDN_AVAIL_WB_BUFF_SIZE       = 0x1D,
+	QUERY_ATTR_IDN_WB_BUFF_LIFE_TIME_EST    = 0x1E,
+	QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE        = 0x1F,
+};
+
+/* UTP QUERY Transaction Specific Fields OpCode */
+enum query_opcode {
+	UPIU_QUERY_OPCODE_NOP		= 0x0,
+	UPIU_QUERY_OPCODE_READ_DESC	= 0x1,
+	UPIU_QUERY_OPCODE_WRITE_DESC	= 0x2,
+	UPIU_QUERY_OPCODE_READ_ATTR	= 0x3,
+	UPIU_QUERY_OPCODE_WRITE_ATTR	= 0x4,
+	UPIU_QUERY_OPCODE_READ_FLAG	= 0x5,
+	UPIU_QUERY_OPCODE_SET_FLAG	= 0x6,
+	UPIU_QUERY_OPCODE_CLEAR_FLAG	= 0x7,
+	UPIU_QUERY_OPCODE_TOGGLE_FLAG	= 0x8,
+	UPIU_QUERY_OPCODE_MAX,
+};

@@ -1,0 +1,55 @@
+import /init.recovery.qcom_decrypt.rc
+
+on init
+    exec u:r:recovery:s0 -- /system/bin/resetprop ro.boot.verifiedbootstate orange
+
+on boot
+    chmod 0755 /system/bin/remove-bootctrl-vintf.sh
+    start remove-bootctrl-vintf
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    # Mount firmware
+    mkdir /firmware
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+
+on property:twrp.modules.loaded=true
+    # Load ADSP firmware for PMIC
+    wait /sys/kernel/boot_adsp/boot
+    write /sys/kernel/boot_adsp/boot 1
+    wait /sys/class/power_supply/battery
+    start health-hal-2-1
+    # Vibrator
+    wait /sys/bus/platform/drivers/qcom-hv-haptics
+    start vendor.qti.vibrator
+    # Charger
+    wait /sys/class/qcom-battery
+    chmod 0664 /sys/class/qcom-battery/pd_verifed
+    chmod 0664 /sys/class/qcom-battery/request_vdm_cmd
+    chmod 0664 /sys/class/qcom-battery/verify_process
+    chmod 0664 /sys/class/qcom-battery/authentic
+    chmod 0664 /sys/class/qcom-battery/verify_slave_flag
+    chmod 0664 /sys/class/qcom-battery/slave_authentic
+    chmod 0664 /sys/class/qcom-battery/is_old_hw
+    start batterysecret
+
+service remove-bootctrl-vintf /system/bin/remove-bootctrl-vintf.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service vendor.qti.vibrator /system/bin/hw/vendor.qti.hardware.vibrator.service
+    class hal
+    user system
+    group system input
+    seclabel u:r:recovery:s0
+
+service batterysecret /system/bin/batterysecret
+    class last_start
+    user root
+    group system system wakelock
+    disabled
+    seclabel u:r:recovery:s0
