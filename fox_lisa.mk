@@ -44,6 +44,22 @@ OF_OPTIONS_LIST_NUM := 9
 # Recovery additional features
 OF_ENABLE_ALL_PARTITION_TOOLS := 1
 
+# full size
+OF_DYNAMIC_FULL_SIZE := 9126805504
+
+# ----- data format stuff -----
+# ensure that /sdcard is bind-unmounted before f2fs data repair or format
+OF_UNBIND_SDCARD_F2FS := 1
+
+# automatically wipe /metadata after data format
+OF_WIPE_METADATA_AFTER_DATAFORMAT := 1
+
+# avoid MTP issues after data format
+OF_BIND_MOUNT_SDCARD_ON_FORMAT := 1
+
+# frp
+OF_ENABLE_FRP_ADDON := 1
+
 # OTA
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
 
