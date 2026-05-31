@@ -28,4 +28,6 @@ export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 export FOX_ENABLE_APP_MANAGER=1
 export FOX_DELETE_AROMAFM=1
 export FOX_USE_NANO_EDITOR=1
+export FOX_SETTINGS_ROOT_DIRECTORY=/data/recovery
+export FOX_MISCELLANEOUS_ROOT_DIRECTORY=/sdcard
 lunch twrp_lisa-eng
