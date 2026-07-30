@@ -177,6 +177,11 @@ TW_X_OFFSET := 10
 TW_W_OFFSET := -10
 TW_CUSTOM_CPU_POS := 150
 
+# Recovery Installer
+USE_RECOVERY_INSTALLER := true
+RECOVERY_INSTALLER_PATH := bootable/recovery/installer
+
+
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Verified Boot
